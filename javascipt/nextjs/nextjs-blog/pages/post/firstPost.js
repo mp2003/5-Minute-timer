@@ -1,15 +1,16 @@
-import Link from 'next/link'
-import React from 'react'
+import Link from "next/link";
+import React from "react";
+import Layout from "../../components/layout";
 
 const firstPost = () => {
   return (
-    <>
-    <h1>First Post</h1>
-    <h2>
-    <Link href="/">Back to Home</Link>
-    </h2>
-    </>
-  )
-}
+    <Layout>
+      <h1>First Post</h1>
+      <h2>
+        <Link href="/">Back to Home</Link>
+      </h2>
+    </Layout>
+  );
+};
 
-export default firstPost
+export default firstPost;
