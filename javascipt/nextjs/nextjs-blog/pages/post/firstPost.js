@@ -12,5 +12,4 @@ const firstPost = () => {
     </Layout>
   );
 };
-
 export default firstPost;
