@@ -4,3 +4,16 @@
     justify-content: center;
     flex-direction: column;
 }
+.image{
+    background-size:auto;
+    height: 144px;
+    width: 144px;
+    background-size: contain;
+    border-radius: 50%;
+}
+.header{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}

@@ -1,5 +1,4 @@
-.Layout{
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.heading1:hover{
+text-shadow: 10px 5px 5px rgb(219, 3, 39);
 }
+
