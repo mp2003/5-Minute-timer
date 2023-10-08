@@ -1,9 +1,4 @@
-.container {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-}
+
 .image{
     background-size:auto;
     height: 144px;
@@ -11,9 +6,19 @@
     background-size: contain;
     border-radius: 50%;
 }
-.header{
+
+.container {
+    max-width: 36rem;
+    padding: 0 1rem;
+    margin: 3rem auto 6rem;
+  }
+  
+  .header {
     display: flex;
-    align-items: center;
-    justify-content: center;
     flex-direction: column;
-}
+    align-items: center;
+  }
+  
+  .backToHome {
+    margin: 3rem 0 0;
+  }
