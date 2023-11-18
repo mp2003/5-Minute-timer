@@ -1,4 +1,4 @@
-import React from "react";
+import { useState } from "react";
 
 const formatDate = (fiveMinutes: any) => {
   const getminutes = fiveMinutes.getMinutes();
@@ -11,7 +11,7 @@ const formatDate = (fiveMinutes: any) => {
 
 const App = () => {
   const fiveMinutes = new Date(0, 0, 0, 0, 5, 0, 0);
-
+  const [intervalId, setIntervalId] = useState<number | null>(null);
   return (
     <>
       <div className="container">
