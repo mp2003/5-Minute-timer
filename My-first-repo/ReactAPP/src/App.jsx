@@ -1,35 +1,73 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { throttle } from 'lodash';
+import React, { useEffect, useState } from 'react';
+import { motion } from 'framer-motion';
 
-function App() {
-  const [count, setCount] = useState(0)
+const App = () => {
+  const [mousePos, setMousePos] = useState({
+    x: 0, y: 0
+  });
+  const [text, settext] = useState("default");
+
+  useEffect(() => {
+    const OnMouseMove = throttle((e) => {
+      setMousePos({
+        x: e.clientX,
+        y: e.clientY
+      });
+    }, 50);
+    window.addEventListener('mousemove', OnMouseMove);
+
+    return () => {
+      window.removeEventListener('mousemove', OnMouseMove);
+    };
+  }, []);
+
+  const variants = {
+    default: {
+      x: mousePos.x - 16,
+      y: mousePos.y - 16
+    },
+    heading: {
+      x: mousePos.x - 100,
+      y: mousePos.y - 100,
+      height: 200,
+      width: 200,
+      backgroundColor: 'black', // Change to white on heading
+      mixBlendMode: 'soft-light',
+    },
+  };
+
+  const textVariants = {
+    default: { color: 'white' },
+    heading: { color: 'pink' },
+  };
+
+  const HEnter = () => {
+    console.log("mouse enter");
+    settext("heading");
+  };
+
+  const HLeave = () => {
+    console.log("mouse leave");
+    settext("default");
+  };
 
   return (
     <>
       <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+        <h1
+          onMouseEnter={HEnter}
+          onMouseLeave={HLeave}
+          initial="default"
+          animate={text}
+          variants={textVariants}
+        >
+          Hello World
+        </h1>
+        <motion.div className="cursor" variants={variants} animate={text} />
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
     </>
-  )
-}
+  );
+};
 
-export default App
+export default App;
